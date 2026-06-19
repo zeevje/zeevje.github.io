@@ -1,1 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeev Elias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#education">Education</a></li>
+        </ul>
+    </nav>
+    <header>
+        <div class="header-content">
+            <img src="headshot.jpg" alt="Zeev Elias" class="headshot">
+            <div>
+                <h1>Zeev Elias</h1>
+                <p class="subtitle">Systems Engineer · Neural Interfaces · Embedded Systems</p>
+                <div class="links">
+                    <a href="https://www.linkedin.com/in/zeevelias/" target="_blank">LinkedIn</a>
+                    <a href="mailto:zeevelias@gmail.com">Email</a>
+                    <a href="https://github.com/zeevje" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>
+
+                I'm a systems engineer working at the intersection of neurotech and embedded
+                systems, with 4 years of experience on first-in-human BCI clinical trials at
+                The Feinstein Institutes for Medical Research (Northwell Health). My day-to-day
+                includes closed-loop stimulation control, real-time biosignal processing, and
+                firmware development, all in the context of live sessions with tetraplegic
+                participants. I'm co-author on two 2025 papers demonstrating restored cortically
+                mediated movement and sensation in complete tetraplegia — one published in Nature
+                Medicine, one currently under review. I'm interested in how that research
+                translates into products that reach patients at scale.
+            </p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+
+            <div class="entry">
+                <h3>Lead Systems Engineer</h3>
+                <p class="meta">The Feinstein Institutes for Medical Research, Northwell Health · Manhasset, NY · 2022-Present</p>
+                <p>
+                    One of two engineers on a 10-person team running first-in-human BCI clinical
+                    trials with tetraplegic participants, with two other non-invasive studies evaluating
+                    transcutaneous stimulation in enhancing restoration of arm and hand function.
+                    Own the embedded systems layer of a closed-loop platform - including neuromuscular
+                    and spinal cord stimulation firmware, wireless communication, hardware synchronization,
+                    and calibration frameworks. Work directly with participants, clinicians, and neuroscientists
+                    to design experiments and build the devices that make them run. Mentored interns, led design
+                    and code reviews, presented results at the Society for Neuroscience Annual Meeting 2024,
+                    and will be presenting at IEEE EMBC 2026 on restoring precision grasping and tactile sensation
+                    via a closed-loop BCI and reinforcement learning-controlled active orthosis.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="entry">
+                <h3>Active Orthosis — BCI-Driven Grasp Restoration</h3>
+                <p class="meta">The Feinstein Institutes for Medical Research · 2022-Present</p>
+                <p>
+                    Designed and built a custom 3D-printed hand orthosis enabling a tetraplegic
+                    participant to grasp objects using decoded movement intentions from a BCI.
+                    Coordinated with a 3D printing lab to scan the participant's hand and produce
+                    a body with integrated slots for a servo motor and force sensor. Engineered
+                    a magnetic breakaway safety mechanism to protect the participant's fingers
+                    from excess tension. Developed ESP32 firmware to receive decoded motor
+                    intentions over SoftAP Wi-Fi, drive a servo via tendon-pull, and stream
+                    force sensor data back to the host over SPI at 50Hz. Later integrated a
+                    DQN reinforcement learning agent developed by a collaborator to dynamically
+                    halt or continue movement based on force feedback and user intent.
+                </p>
+                <p class="stack">
+                    <span>C++</span><span>MATLAB</span><span>ESP32</span>
+                    <span>SoftAP Wi-Fi</span><span>SPI</span><span>Arduino</span>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>Neuromuscular & Spinal Cord Stimulation Firmware</h3>
+                <p class="meta">The Feinstein Institutes for Medical Research · 2022-Present</p>
+                <p>
+                    Extended the firmware of a Neuvotion neuromuscular stimulator to support
+                    wireless command reception, automatic pattern loading from decoded BCI output,
+                    and a ramping function that made stimulation feel more natural and comfortable.
+                    Built hardware synchronization across three devices — the Neuvotion stimulator,
+                    a custom ESP32-based spinal cord stimulator, and an intracortical microstimulator
+                    — using an oscilloscope to measure and align pulse timing. Added a blanking TTL
+                    pulse to suppress stimulation artifact in the decoder. Verified stable ISR
+                    operation at 2Hz, 50Hz, and 100Hz.
+                </p>
+                <p class="stack">
+                    <span>C++</span><span>ESP32</span><span>Arduino IDE</span>
+                    <span>Blynk</span><span>I2S</span><span>ISR</span>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>Object Discrimination Task — Sensory Restoration</h3>
+                <p class="meta">The Feinstein Institutes for Medical Research · 2022-Present</p>
+                <p>
+                    Developed embedded and host-side acquisition for a task testing whether a
+                    paralyzed participant could distinguish objects through cortical stimulation.
+                    Soldered tactile force sensors onto an ESP32, wrote firmware to stream sensor
+                    data over BLE at 50Hz, and implemented the MATLAB receiver on the host PC.
+                    When a force threshold was crossed, the system triggered cortical stimulation
+                    to restore a sense of touch — integrated with the existing BCI decoding
+                    pipeline running at 10Hz.
+                </p>
+                <p class="stack">
+                    <span>C++</span><span>MATLAB</span><span>ESP32</span>
+                    <span>ArduinoBLE</span><span>SPI</span>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>3D Finger Tracking System (GMHD)</h3>
+                <p class="meta">The Feinstein Institutes for Medical Research · 2022-Present</p>
+                <p>
+                    Built a markerless hand tracking pipeline for two clinical trials measuring
+                    finger aperture during therapy. Used two Orbbec Femto Bolt depth cameras with
+                    a MediaPipe hand landmark model to capture RGB-depth data and convert fingertip
+                    positions to 3D world coordinates at 20FPS. A master script ran two parallel
+                    processes — one prompting the participant through tasks, one handling camera
+                    capture and CSV logging. Later integrated a third-party GMH-D model that
+                    significantly improved accuracy and reduced frame drops. Trained clinicians
+                    on setup, operation, and troubleshooting.
+                </p>
+                <p class="stack">
+                    <span>Python</span><span>MediaPipe</span><span>OpenCV</span>
+                    <span>NumPy</span><span>Pandas</span><span>pyOrbbecSDK</span>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>Real-Time Embedded Communication & Control System</h3>
+                <p class="meta">The Feinstein Institutes for Medical Research</p>
+                <p>
+                    Engineered an ESP32-based real-time communication system for transmitting
+                    control data between embedded devices and a host computer. Reduced data
+                    transmission latency from a 100ms target to a stable 40ms through optimized
+                    packet protocols and robust parsing logic — critical for maintaining timing
+                    integrity in closed-loop BCI experiments.
+                </p>
+                <p class="stack">
+                    <span>C++</span><span>ESP32</span><span>UART</span>
+                    <span>Packet Protocols</span><span>Real-Time Systems</span>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>Smart Humidifier Controller</h3>
+                <p class="meta">Personal Project · 2025</p>
+                <p>
+                    Designed and built a closed-loop humidifier controller on an ESP32 Feather
+                    board using FreeRTOS and a seven-state state machine to manage humidity
+                    sensing, display, BLE communication, and actuator control. Followed a
+                    structured engineering process from requirements and prioritization through
+                    hardware block diagram, BOM, and firmware implementation in C++ via
+                    PlatformIO using ESP-IDF.
+                </p>
+                <p class="stack">
+                    <span>C++</span><span>FreeRTOS</span><span>ESP32</span>
+                    <span>BLE</span><span>ESP-IDF</span><span>PlatformIO</span>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>Seizure Monitoring Wearable</h3>
+                <p class="meta">Graduate Thesis · University at Buffalo · 2022</p>
+                <p>
+                    Developed a multimodal wearable seizure detection system integrating
+                    electrodermal activity, EMG, and accelerometry to classify grand mal seizure
+                    activity from regular movement. Upon detection, alerts and raw data were
+                    transmitted wirelessly to a receiver. A linear actuator on the receiver then
+                    extended to mimic an intramuscular midazolam injection — targeting seizure
+                    termination rather than alerting alone. The multimodal approach was chosen
+                    to improve sensitivity and accuracy over single-biomarker devices.
+                </p>
+                <p class="stack">
+                    <span>EDA</span><span>EMG</span><span>Accelerometry</span>
+                    <span>Wi-Fi</span><span>Linear Actuator</span><span>C++</span>
+                </p>
+            </div>
+
+        </section>
+
+        <section id="publications">
+            <h2>Publications & Presentations</h2>
+
+            <div class="entry">
+                <h3><a href="https://doi.org/10.1101/2025.08.19.25330198" target="_blank">
+                        Restoring Cortically Mediated Movement and Sensation in Complete Tetraplegia
+                    </a></h3>
+                <p class="meta">Nature Medicine · 2025</p>
+                <p>Chandrasekaran S, Wandelt SK, Jangam A, <strong>Elias Z</strong>, Ibroci E, Maffei C,
+                    Rosenthal IA, Ramdeo R, Kim J, Xu J, Glasser MF, Neuwirth A, Goldstein TA,
+                    Crone NE, Fifer MS, Tostaeva G, Bickel S, Griffin D, Funaro M, … Bouton CE.</p>
+            </div>
+
+            <div class="entry">
+                <h3><a href="https://doi.org/10.1101/2025.09.21.25336267" target="_blank">
+                        Cortically Interfaced Human Avatar Enables Remote Volitional Grasp and Shared Discriminative
+                        Touch
+                    </a></h3>
+                <p class="meta">Under Review · 2025</p>
+                <p>Cater E, Wandelt S, Jangam A, <strong>Elias Z</strong>, Ibroci E, Maffei C,
+                    Griffin D, Bickel S, Ben-Shalom N, Stein A, Mehta A, Chandrasekaran S, Bouton C.</p>
+            </div>
+
+            <div class="entry">
+                <h3>Enabling Precision Grasping and Tactile Feedback in Tetraplegia Using a Bidirectional
+                    Brain-Computer Interface and a Low-Profile Active Orthosis</h3>
+                <p class="meta">Society for Neuroscience Annual Meeting · Poster · 2024 ·
+                    <a href="sfn2024_poster.pdf" target="_blank">View Poster</a>
+                </p>
+            </div>
+
+            <div class="entry">
+                <h3>Restoring Precision Grasping and Tactile Sensation via a Closed-Loop BCI and
+                    Reinforcement Learning-Controlled Active Orthosis</h3>
+                <p class="meta">IEEE EMBC · Talk · 2026</p>
+            </div>
+
+            <div class="entry">
+                <h3><a href="https://doi.org/10.3389/frym.2022.648963" target="_blank">
+                        Axons in Trouble Yelp for Help From Schwann Cells
+                    </a></h3>
+                <p class="meta">Frontiers for Young Minds · 2022</p>
+                <p>Islam R, Hurtado D, <strong>Elias Z</strong>, Babetto E, Beirowski B.</p>
+            </div>
+
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+
+            <div class="entry">
+                <h3>M.S. Biomedical Engineering</h3>
+                <p class="meta">University at Buffalo, The State University of New York · 2022</p>
+                <p>Thesis: <em>Multimodal Detector to Predict and Terminate Seizures</em></p>
+            </div>
+
+            <div class="entry">
+                <h3>B.S. Biomedical Engineering</h3>
+                <p class="meta">University at Buffalo, The State University of New York · 2021</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Zeev Elias</p>
+    </footer>
+
+</body>
+
+</html>
